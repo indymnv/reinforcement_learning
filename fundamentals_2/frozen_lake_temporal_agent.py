@@ -14,7 +14,7 @@ if __name__ == '__main__':
  
     env = gym.make('FrozenLake-v0')
     agent = Agent(learning_rate = 0.001, gamma = 0.9, n_actions =4, n_states = 16, eps_start = 1.0, eps_end = 0.01, eps_dec = 0.9999995)
-    env.reset()
+    
 
     for i in range(games):
         done = False
@@ -29,6 +29,7 @@ if __name__ == '__main__':
             obs_, reward, done, info  = env.step(action)
             agent.learn(obs , action, reward, obs_)
             score += reward
+            obs = obs_
         scores.append(score)
 
         if i % 100 == 0:
